@@ -3,7 +3,10 @@
 ## Team: Melanye, Mona, Monica, Omar, Yeon
 
 Problem Statement: Gentrification displaces poor individuals and minorities and increases homeless population
+
 Timeline: from 2000 to 2010
+
+Cities of Interest: Los Angeles, CA;  NYC, NY; Seattle, WA; Chicago, IL;
 
 ### ACTION ITEMS
 Migration and map visualization for that 

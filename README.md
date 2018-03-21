@@ -1,6 +1,5 @@
 # Project 2
-
-## Team Members: Melanye, Mona, Monica, Omar, Yeon
+### Team Members: Melanye, Mona, Monica, Omar, Yeon
 
 Problem Statement: Gentrification displaces poor individuals and minorities and increases homeless population
 

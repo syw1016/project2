@@ -1,10 +1,22 @@
-from flask import Flask, render_template
+#using sample dataset to play around with plotly, d3, and flask shit
 
-app = Flask(__name__)
+#first, create the outline for the flask app
 
+
+##importing packages and dependencies
+from flask import Flask,jsonify,render_template
+##initializing the app
+app=Flask(__name__)
+
+##creating routes
 @app.route('/')
-def index():
-  return render_template('index.html')
+def home():
+	return render_template('index.html')
+
+
+@app.route('/view1')
+def firstView():
+	return render_template('view1-test.html')
 
 if __name__ == "__main__":
-  app.run(debug=True)
+    app.run(debug=True)

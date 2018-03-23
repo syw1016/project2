@@ -9,7 +9,7 @@ As rent increases and new business increases, looking at the increase of homeles
 * Timeline: from 2000 to 2010
 * Cities of Interest: Los Angeles, CA;  NYC, NY; Seattle, WA; Chicago, IL;
 
-### ACTION ITEMS
+### Action items
 Migration and map visualization for that 
 Rent or mortgage and retail data with slider map (with dots and as rent increase, increase number of dots)
 Reviewing API for walking score + crime rate 

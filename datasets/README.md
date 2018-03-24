@@ -10,7 +10,7 @@ Hills Hills city  250001  0 0 0 247500  0 0 250,000+
 
 #### LA_County_HVI.csv (Yeon)
 * Home Value Index for cities in Los Angeles County from April 1996 to Feb 2018
-* Home Value Indexes are not available in below cities
+* Home Value Indexes are not available for below cities
 ```
 Bradbury, Industry, Irwindale, Vernon
 ```

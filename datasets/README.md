@@ -1,4 +1,4 @@
-## About data
+## About our data
 
 #### 2009_2016_LACounty_Data.csv (Omar)
 * This workbook contains LA County (88 cities) Income data from 2009-2016.

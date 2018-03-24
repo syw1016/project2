@@ -1,5 +1,5 @@
 import sqlite3
-import pandas as pd
+
 sqlite_file='/Users/monaderakhshan/Git_Repo/Data_Analytics_Assignments/PROJECT 2/project2_db_TEST.sqlite'
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()

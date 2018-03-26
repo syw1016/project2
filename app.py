@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
-engine = create_engine("sqlite:///lacounty.sqlite")
+engine = create_engine("sqlite:///lacounty_pk.sqlite")
 
 Base = automap_base()
 Base.prepare(engine, reflect=True)

@@ -748,7 +748,7 @@ State_County_FIPS,State_FIPS,County_FIPS,County_Name,State_Name,Other_Race_Alone
 '35005','35','005',Chaves County,New Mexico,0
 '35006','35','006',Cibola County,New Mexico,
 '35009','35','009',Curry County,New Mexico,-1
-'35013','35','013',Doña Ana County,New Mexico,
+'35013','35','013',Dona Ana County,New Mexico,
 '35015','35','015',Eddy County,New Mexico,
 '35017','35','017',Grant County,New Mexico,
 '35019','35','019',Guadalupe County,New Mexico,
@@ -1337,21 +1337,3 @@ State_County_FIPS,State_FIPS,County_FIPS,County_Name,State_Name,Other_Race_Alone
 '56037','56','037',Sweetwater County,Wyoming,
 '56041','56','041',Uinta County,Wyoming,
 '56045','56','045',Weston County,Wyoming,
-'72013','72','013',Arecibo Municipio,Puerto Rico,
-'72021','72','021',Bayamón Municipio,Puerto Rico,
-'72025','72','025',Caguas Municipio,Puerto Rico,
-'72027','72','027',Camuy Municipio,Puerto Rico,
-'72031','72','031',Carolina Municipio,Puerto Rico,43
-'72033','72','033',Cataño Municipio,Puerto Rico,
-'72035','72','035',Cayey Municipio,Puerto Rico,
-'72041','72','041',Cidra Municipio,Puerto Rico,
-'72061','72','061',Guaynabo Municipio,Puerto Rico,
-'72063','72','063',Gurabo Municipio,Puerto Rico,
-'72071','72','071',Isabela Municipio,Puerto Rico,
-'72075','72','075',Juana Díaz Municipio,Puerto Rico,
-'72083','72','083',Las Marías Municipio,Puerto Rico,
-'72097','72','097',Mayagüez Municipio,Puerto Rico,
-'72113','72','113',Ponce Municipio,Puerto Rico,
-'72127','72','127',San Juan Municipio,Puerto Rico,70
-'72135','72','135',Toa Alta Municipio,Puerto Rico,
-'72137','72','137',Toa Baja Municipio,Puerto Rico,

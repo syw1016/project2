@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
-    <!-- <link href='style.css' rel='stylesheet'> -->
-    <title>Project 2: Crime Graph</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+<!-- <link href='style.css' rel='stylesheet'> -->
+<title>Project 2: Crime Graph</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-	<div class = 'container'>
-		<div class = 'row'>
-			<h1 align='center'> Graph Title </h1>
-		<hr>
-		<p align='center'> This is where we will briefly explain the below graph blahblahblahblah </p>
-		</div>
-		<br>
-		<br>
-	</div>
+<div class = 'container'>
+  <div class = 'row'>
+    <h1 align='center'> Graph Title </h1>
+    <hr>
+    <p align='center'> This is where we will briefly explain the below graph blahblahblahblah </p>
+  </div>
+  <br>
+  <br>
+</div>
 
+<!-- county and its crime rate-->
+<div id ='crime_graph'></div>
 
+<script>
+  var url = "/api/la_county_crime";
+  Plotly.d3.json(url,function(error,response) {
+    if (error) return console.warn(error);
 
-    <!-- county and its crime rate-->
-
-	<div id ='crime_graph'></div>
-
-	<script>
-		var url = "/api/la_county_crime";
-		Plotly.d3.json(url,function(error,response){
-
-			if (error) return console.warn(error);
-
-      var grand_total = response.pop();
-      console.log(grand_total)
-		})
-	</script>
-
-
-
-
-
+    var grand_total = response.pop();
+    console.log(grand_total)
+  });
+</script>
 </body>
 </html>

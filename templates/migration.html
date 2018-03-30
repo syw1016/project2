@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Migration Layer</title>
     <link rel="stylesheet" href = "../static/lib/leaflet.css" />
+    <link rel="stylesheet" href= "../static/css/migration.css"/>
     <style>
     html,body{
         margin: 0;
@@ -15,34 +16,44 @@
         height: 100%;
         width: 100%;
     }
-    #event{
+    #correlate{
+        z-index: 2000;
+        background-color: rgba(155, 238, 260, 0.5);
         position: absolute;
+        width: 50%;
+        height: 40%;
+        right: 100px;
         top: 50px;
-        right: 600px;
-        height: 100px;
-        width: 400px;
-        z-index: 10000;
     }
-    .btn{
-        border-color:gray;
-        border-width: 2px;
-        background-color:white;
-   }
     </style>
 </head>
 
 <body>
-    <div id="map"></div>
-    <div id='event'>
-        <!--<input type="button" value="setData" class="btn" onclick="setData()">
-        <input type="button" value="hide" class="btn" onclick="hide()">
-        <input type="button" value="show" class="btn" onclick="show()">
-        <input type="button" value="pause" class="btn" onclick="pause()">
-        <input type="button" value="play" class="btn" onclick="play()">
-        <input type="button" value="destroy" class="btn" onclick="destroy()">-->
-        <select id="selDataset" onchange="optionChanged(this.value)">
-        </select>
+    <div>
+        <div id="correlate"></div>
+        <div id="map"></div>
     </div>
+    <div id='event'>
+        <div class="btn_grp">
+            <div class="dropup">
+            <button class="dropbtn">Top 10 (CA only)</button>
+            <div class="dropup-content">
+                <a id= 0 href="#" onclick="optionChanged(this.id)">CA only</a>
+                <a id= 1 href="#" onclick="optionChanged(this.id)">CA excluded</a>
+                <a id= 2 href="#" onclick="optionChanged(this.id)">Correlations</a>
+            </div>
+            </div>
+            <div class="dropup">
+            <button class="dropbtn">By Ethincity</button>
+                <div class="dropup-content">
+                <a id= 10 href="#" onclick="optionChanged(this.id)">Asian</a>
+                <a id= 11 href="#" onclick="optionChanged(this.id)">Black</a>
+                <a id= 12 href="#" onclick="optionChanged(this.id)">Hispanic</a>
+                <a id= 13 href="#" onclick="optionChanged(this.id)">White</a>
+            </div>
+        </div>
+    </div>
+    
     <script src="../static/lib/leaflet.js"></script>
     <script src='../static/src/src.js'></script>
     <script src="../static/route_dict.js"></script>
@@ -51,10 +62,8 @@
     <script>
         var lrmap = L.map('map').setView([35, -95], 5);
         L.tileLayer("https://api.tiles.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?" +
-  "access_token=pk.eyJ1Ijoia2pnMzEwIiwiYSI6ImNpdGRjbWhxdjAwNG0yb3A5b21jOXluZTUifQ." +
-  "T6YbdDixkOBWH_k9GbS8JQ").addTo(lrmap);
-        //L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw')
-        //.addTo(lrmap);
+                "access_token=pk.eyJ1Ijoia2pnMzEwIiwiYSI6ImNpdGRjbWhxdjAwNG0yb3A5b21jOXluZTUifQ." +
+                "T6YbdDixkOBWH_k9GbS8JQ").addTo(lrmap);
 
         var data = route_dict;
 

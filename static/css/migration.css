@@ -1,0 +1,54 @@
+.dropbtn {
+    background-color: #252323/*#272624*/;
+    color: #bbb;
+    padding: 8px;
+    font-size: 12px;
+    border: none;
+    font-weight: bold;
+}
+
+.dropup {
+    position: relative;
+    display: block;
+    float: left;
+    border-right: none;
+}
+
+.dropup-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 85px;
+    max-width: 200px;
+    bottom: 30px;
+    z-index: 1;
+}
+
+.dropup-content a {
+    color: black;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropup-content a:hover {
+    background-color: #9ec6a0;/*#ccc;*/
+}
+
+.dropup:hover .dropup-content {
+    display: block;
+}
+
+.dropup:hover .dropbtn {
+    background-color: #3e8e41;
+    margin: 0px 0px 0px 0px;
+    margin-right: 0px;
+}
+.btn_grp{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding-right: 40px;
+  padding-bottom: 50px;
+  z-index: 10000; 
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+</style>
+</head>
+<body style="background: black">
+
+    <div class="btn_grp">
+        <div class="dropup">
+        <button class="dropbtn">Top 10 (CA only)</button>
+        <div class="dropup-content">
+            <a id= 0 href="#" onclick=test(this.id)>CA only</a>
+            <a id= 1 href="#" onclick=test(this.id)>CA excluded</a>
+            <a id= 2 href="#" onclick=test(this.id)>Correlations</a>
+        </div>
+        </div>
+        <div class="dropup">
+        <button class="dropbtn">By Ethincity</button>
+            <div class="dropup-content">
+            <a id= 10 href="#" onclick=test(this.id)>Asian</a>
+            <a id= 11 href="#" onclick=test(this.id)>Black</a>
+            <a id= 12 href="#" onclick=test(this.id)>Hispanic</a>
+            <a id= 13 href="#" onclick=test(this.id)>White</a>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    function test(valueId){
+        window.alert("clicked "+valueId)
+    }
+</script>
+</body>
+</html>
+

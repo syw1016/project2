@@ -31,48 +31,36 @@ def migration(stmtId, st=None):
 
   """
   lmt = 10
+  results = db.session.query(migration.c.County_Name,
+                            migration.c.State_Name,
+                            migration.c.Geo_Lng, 
+                            migration.c.Geo_Lat,
+                            migration.c.Color, 
+                            migration.c.Total)
   if stmtId == '-1':
     # all migrating
-    results = db.session.query(migration.c.County_Name,
-                                migration.c.State_Name,
-                                migration.c.Geo_Lng, 
-                                migration.c.Geo_Lat,
-                                migration.c.Color, 
-                                migration.c.Total) \
-                        .order_by(migration.c.Total).limit(50).all()
+    results = results.order_by(migration.c.Total).limit(50).all()
   elif stmtId == 0:
       # filter includes migration going to the selected state
-      results = db.session.query(migration.c.County_Name,
-                                  migration.c.State_Name,
-                                  migration.c.Geo_Lng, 
-                                  migration.c.Geo_Lat,
-                                  migration.c.Color, 
-                                  migration.c.Total) \
-                          .filter(migration.c.State_Name == st).order_by(migration.c.Total).limit(lmt).all()
+      results = results.filter(migration.c.State_Name == st).order_by(migration.c.Total).limit(lmt).all()
   elif stmtId == 1:
       # filter excludes migration going to the selected state
       #variable limit query results for those leaving, excludes a particular state
-      results = db.session.query(migration.c.County_Name,
-                                  migration.c.State_Name,
-                                  migration.c.Geo_Lng, 
-                                  migration.c.Geo_Lat,
-                                  migration.c.Color, 
-                                  migration.c.Total) \
-                          .filter(migration.c.State_Name != st).order_by(migration.c.Total).limit(lmt).all()
-  elif stmtId == 2:
-    # black, Top 10
-    pass
-  elif stmtId == 3:
+      results = results.filter(migration.c.State_Name != st).order_by(migration.c.Total).limit(lmt).all()
+  elif stmtId == 10:
+    # asian, Top 10
+    results = results.order_by(migration.c.Asian_Alone).limit(lmt).all()
+  elif stmtId == 11:
+    # black Top 10
+    results = results.order_by(migration.c.Black_or_African_American_Alone).limit(lmt).all()
+  elif stmtId == 12:
+    # hispanic Top 10
+    results = results.order_by(migration.c.Hispanic_or_Latino).limit(lmt).all()
+  elif stmtId == 13:
     # white Top 10
-    pass
-  elif stmtId == 4:
-    # asian Top 10
-    pass
-  elif stmtId == 5:
-    # hispanic Top 10
-    pass
-  elif stmtId == 6:
-    # hispanic Top 10
+    results = results.order_by(migration.c.White_Alone).limit(lmt).all()
+  elif stmtId == 3:
+    # correlate Top 10
     pass
   migration_routes = []
   for index, res in enumerate(results):

@@ -1,4 +1,4 @@
-window.onload
+/*window.onload
 {
     var sampleNames = document.getElementById("selDataset");
     var na = ['Select filter', 'All', 'Top 10 (CA only)', 'Top 10 (CA Excluded)'];
@@ -13,7 +13,7 @@ window.onload
         sampleNames.append(option);
     });
 
-}
+}*/
 
 function optionChanged(filter) {
     stmtId =  filter

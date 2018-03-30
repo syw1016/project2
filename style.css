@@ -10,3 +10,7 @@
 .line-tag {
   display:none;
 }
+
+ul {
+  list-style-type: none;
+}

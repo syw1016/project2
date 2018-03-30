@@ -2,11 +2,13 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-import pandas as pd
-from pandas.io.json import json_normalize
+
+from flask import (Flask, jsonify, render_template,make_response,redirect,request)
+
 import json
 
-from flask import Flask, jsonify, render_template
+from collections import OrderedDict
+
 
 engine = create_engine("sqlite:///lacounty_pk.sqlite")
 
@@ -15,11 +17,14 @@ Base.prepare(engine, reflect=True)
 
 hvi = Base.classes.la_county_hvi
 income = Base.classes.la_county_income
-crime=Base.classes.la_county_crime
+crime = Base.classes.la_county_crime
 
 session = Session(engine)
 
 app = Flask(__name__)
+
+from flask_sqlalchemy import SQLAlchemy
+
 
 @app.route("/")
 def welcome():
@@ -27,14 +32,25 @@ def welcome():
     return (
         f"Available Routes:<br/>"
         f"/api/la_county_hvi<br/>"
-        f"/api/la_county_income<br>"
-        f"/api/la_county_crime"
+        f"/api/la_county_income"
     )
 
-@app.route("/crime")
-def crime_html():
-    """List all available api routes."""
-    return render_template('crime.html')
+# @app.route("/crime")
+# def crime_html():
+#     return render_template('crime.html')
+
+@app.route('/api/la_county_crime')
+def crime_json():
+  dataList = []
+
+  for row in session.query(crime):
+    data = row.__dict__
+    del data['_sa_instance_state']
+    dataList.append(data)
+  
+  return jsonify(dataList)
+
+
 
 @app.route('/api/la_county_hvi')
 def hvi_json():
@@ -58,18 +74,8 @@ def income_json():
 
   return jsonify(dataList)
 
-@app.route('/api/la_county_crime')
-def crime_json():
-  dataList = []
-
-  for row in session.query(crime):
-    data = row.__dict__
-    del data['_sa_instance_state']
-    dataList.append(data)
-  
-  return jsonify(dataList)
-
 #Monica's Routes::
+
 
 @app.route('/migration')
 def migrationHome():
@@ -143,18 +149,13 @@ def migration(stmtId, st=None):
 
   return make_response(json.dumps(migration_routes))
 
-
-
-
-
 if __name__ == "__main__":
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///migration.sqlite"
+  app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///migration.sqlite"
 
-    db = SQLAlchemy(app)
+  db = SQLAlchemy(app)
 
-    db.metadata.reflect(db.engine)
-    #create tables
-    migration = db.metadata.tables['migration']
-
-    #app.run(debug=True)
-    app.run()
+  db.metadata.reflect(db.engine)
+      #create tables
+  migration = db.metadata.tables['migration']
+      # app.run(debug=True)
+  app.run()

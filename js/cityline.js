@@ -36,7 +36,7 @@ function drawCityLine() {
 
   var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("LA_County_HVI.csv", d => d).then(data => {
+  d3.csv("datasets/LA_County_HVI.csv", d => d).then(data => {
     let cities = data.slice();
     let timeframe = data.columns.slice(159);
     let cityNames = cities.map(e => e.RegionName)

@@ -10,5 +10,9 @@ def hvi():
 def income():
   return render_template('income.html')
 
+@app.route('/crime')
+def income():
+  return render_template('crime.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

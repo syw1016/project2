@@ -90,6 +90,10 @@ def hvi():
 def income():
   return render_template('income.html')
 
+@app.route('/crime')
+def income():
+  return render_template('crime.html')
+
 @app.route('/la_county_hvi')
 def hvi_json():
   # This route is only called by the home page to return a JSON response required for visualization 

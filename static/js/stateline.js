@@ -21,8 +21,8 @@ function drawStateline(states) {
 
   var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("datasets/State_Zhvi_AllHomes.csv", d => d).then(data => {
-    let states = data.slice();
+  d3.csv("static/datasets/State_Zhvi_AllHomes.csv", d => d).then(data => {
+  let states = data.slice();
     let timeframe = data.columns.slice(3);
     let stateNames = states.map(e => e.RegionName)
 

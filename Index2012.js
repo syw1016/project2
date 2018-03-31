@@ -13,16 +13,15 @@ $(document).ready(function () {
     //circleColor: use @default
     data: {
       items: [
-        {text: "BATTERY - SIMPLE ASSAULT", count: "19810"},
-        {text: "THEFT PETTY ($950 & UNDER)", count: "16081"},
-        {text: "BURGLARY FROM VEHICLE", count: "15904"},
+        {text: "BATTERY", count: "19810"},
+        {text: "THEFT_PETTY", count: "16081"},
+        {text: "BURGLARY_VEHICLE", count: "15904"},
         {text: "BURGLARY", count: "15095"},
-        {text: "VEHICLE - STOLEN", count: "14811"},
-        {text: "THEFT OF IDENTITY", count: "13690"},
-        {text: "VANDALISM - MISDEAMEANOR ($399 OR UNDER)", count: "9773"},
-        {text: "INTIMATE PARTNER - SIMPLE ASSAULT", count: "10264"},
+        {text: "VEHICLE_STOLEN", count: "14811"},
+        {text: "IDENTITY_THEFT", count: "13690"},
+        {text: "VANDALISM", count: "18794"},
+        {text: "INTIMATE_ASSAULT", count: "10264"},
         {text: "ROBBERY", count: "7833"},
-        {text: "VANDALISM - FELONY ($400 & OVER, ALL CHURCH VANDALISMS)", count: "9021"}
       ],
       eval: function (item) {return item.count;},
       classed: function (item) {return item.text.split(" ").join("");}

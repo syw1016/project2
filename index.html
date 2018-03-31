@@ -158,25 +158,7 @@
         .attr("dy", "0.35em")
         .style("font", "10px sans-serif")
         .text(function(d) { return d.id; });
-
-      context.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + height2 + ")")
-        .call(xAxis2);
-
-      context.append("g")
-        .attr("class", "brush")
-        .call(brush)
-        .call(brush.move, x.range());
   })
-
-    function brushed() {
-      var s = d3.event.selection || x2.range();
-      x.domain(s.map(x2.invert, x2));
-      g.selectAll("path.line").attr("d", function(d) {return line(d.values.filter(e => e.hvi != 0));});
-      g.select(".x.axis").call(xAxis);
-      g.select(".y.axis").call(yAxis);
-    }
   </script>
 </body>
 </html>

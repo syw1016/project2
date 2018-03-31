@@ -1,8 +1,9 @@
 function drawStateline(states) {
   let svg = d3.select("#stateline"),
-      margin = {top: 20, right: 120, bottom: 40, left: 60},
-      width = +svg.attr("width") - margin.left - margin.right,
+      margin = {top: 20, right: 65, bottom: 40, left: 60},
+      width = parseInt(svg.style("width")) - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
+
 
   let parseTime = d3.timeParse("%Y-%m");
 

@@ -25,8 +25,34 @@
 <body>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-12">
-      <h3>Home Value Index change between 2009 and 2017 (Statewide)</h3>
+    <div class="col-lg-12 text-center">
+      <h1>Home Value Index Data Insight</h1>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header p-2"><strong>Data Source</strong></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item p-2"><img src="static/img/zillow.png" alt="Zillow Logo" height="50%"> : A smoothed, seasonally adjusted measure of the median estimated home value across a given region and housing type</li>
+    </ul>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header p-2"><strong>Libraries Used</strong></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item p-2"><button type="button" class="btn btn-warning p-1">d3</button> : To draw line graphs for statewide and LA county cities Home Value Index Change</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-success p-1">leaflet</button> : To draw the map for "Statewide Home Value Index Change (2009 - 2017)</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-success p-1">leaflet-pattern</button> : To add stripe pattern in leaflet map (leaflet plug-in)</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-primary p-1">jquery</button> : To help basic DOM manipulation and Event handling</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-primary p-1">jquery-multiselect</button> : To give select option for plotting different cities (jquery plug-in)</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-dark p-1">quicksearch</button> : To give an option to search for cities in multiselect area</li>
+      <li class="list-group-item p-2"><button type="button" class="btn btn-info p-1" style="background-color: rgb(86, 61, 124); border-color: rgb(86, 61, 124);">bootstrap</button> : For page styling</li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2>Statewide Home Value Index Change (2009 - 2017)</h2>
     </div>
   </div>
 
@@ -52,16 +78,6 @@
     <div class="col-lg-8">
       <svg id="cityline" height="600" width="100%"></svg>
     </div>
-  </div>
-
-  <div class="card mb-3 tight">
-    <div class="card-header">How is this page built</div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><button type="button" class="btn btn-success">leaflet</button> : To draw the map for "Home Value Index Change between 2009 and 2017"</li>
-      <li class="list-group-item"><button type="button" class="btn btn-success">leaflet-pattern</button> : To add stripe pattern in leaflet map (plug-in)</li>
-      <li class="list-group-item"><button type="button" class="btn btn-warning">d3</button> : To draw line graphs for statewide and LA county cities Home Value Index Change</li>
-      <li class="list-group-item"><button type="button" class="btn btn-info" style="background-color: rgb(86, 61, 124); border-color: rgb(86, 61, 124);">bootstrap</button> : For page styling</li>
-    </ul>
   </div>
 </div>
 

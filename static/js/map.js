@@ -32,14 +32,22 @@ info.addTo(map);
 
 // get color depending on population density value
 function getColor(d) {
-  return d > 1000 ? '#800026' :
-      d > 500  ? '#BD0026' :
-      d > 200  ? '#E31A1C' :
-      d > 100  ? '#FC4E2A' :
-      d > 50   ? '#FD8D3C' :
-      d > 20   ? '#FEB24C' :
-      d > 10   ? '#FED976' :
+  return d > 150000 ? '#800026' :
+      d > 100000  ? '#BD0026' :
+      d > 50000  ? '#E31A1C' :
+      d > 25000  ? '#FC4E2A' :
+      d > 12500   ? '#FD8D3C' :
+      d > 1000   ? '#FEB24C' :
+      d > 0   ? '#FED976' :
             '#FFEDA0';
+  // return d > 1000 ? '#800026' :
+  //     d > 500  ? '#BD0026' :
+  //     d > 200  ? '#E31A1C' :
+  //     d > 100  ? '#FC4E2A' :
+  //     d > 50   ? '#FD8D3C' :
+  //     d > 20   ? '#FEB24C' :
+  //     d > 10   ? '#FED976' :
+  //           '#FFEDA0';
 }
 
 function style(feature) {
@@ -139,7 +147,7 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
-    grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+    grades = [-20000, 0, 1500, 12500, 25000, 50000, 10000, 150000],
     labels = [],
     from, to;
 
@@ -149,7 +157,7 @@ legend.onAdd = function (map) {
 
     labels.push(
       '<i style="background:' + getColor(from + 1) + '"></i> ' +
-      from + (to ? '&ndash;' + to : '+'));
+      from + (to | to === 0 ? '&ndash;' + to : '+'));
   }
 
   div.innerHTML = labels.join('<br>');

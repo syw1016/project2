@@ -84,9 +84,11 @@ def migration(stmtId, st=None):
 
 @app.route('/hvi')
 def hvi():
-  #Homepage for Home Value Index
-  #This Route is used as a default home and visualization for HVI plots
   return render_template('hvi.html')
+
+@app.route('/income')
+def income():
+  return render_template('income.html')
 
 @app.route('/la_county_hvi')
 def hvi_json():
@@ -104,23 +106,6 @@ def hvi_json():
     r={}
 
   return make_response(json.dumps(data))
-
-@app.route('/income')
-def income():
-  return render_template('income.html')
-
-@app.route('/crime')
-def crimeHome():
-  return render_template('crime2010.html')
-@app.route('/crime2010')
-def crime0():
-    return render_template('crime2010.html')
-@app.route('/crime2011')
-def crime1():
-    return render_template('crime2011.html')
-@app.route('/crime2017')
-def crime7():
-    return render_template('crime2017.html')
 
 
 if __name__ == "__main__":

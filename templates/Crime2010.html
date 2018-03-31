@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Bubble Chart</title>
+  <meta charset="utf-8">
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+  <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+  <script src="../static/js/index2010.js"></script>
+ <style>
+    .bubbleChart {
+      min-width: 100px;
+      max-width: 700px;
+      height: 700px;
+      margin: 0 auto;
+    }
+    .bubbleChart svg{
+      background: #000000;
+    }
+  </style>
+</head>
+<body style="background: #000000">
+  <select class="pdown-right" onchange="optionChanged(this.value)" id="year">
+    <!--<option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2015">2017</option>
+    <option value="2016">2018</option>-->
+  </select>
+<div class="bubbleChart"></div>
+</body>
+<script>
+window.onload
+{
+        var yr = document.getElementById("year");
+        years = ["2010","2011","2012","2013","2014","2015","2016","2017","2018"]
+        
+        years.forEach(function(e, i){
+            var option = document.createElement("option")
+            if(i===0){
+                option.defaultSelected=true
+            }
+            option.value = e;
+            option.label = e;
+            yr.append(option);
+        });
+}
+function optionChanged(yr) {
+  url = '/crime/'+ yr
+  /*d3.queue()
+        .defer(d3.request, url)
+        .await(show);*/
+  if (yr==='2010') {
+    window.location.replace("crime2010");
+  }
+  else if (yr==='2011') {
+    window.location.replace("crime2011");
+  }
+  else if (yr==='2012') {
+    window.location.replace("crime2012");
+  }
+  else if (yr==='2013') {
+    window.location.replace("crime2013");
+  }
+  else if (yr==='2014') {
+    window.location.replace("crime2014");
+  }
+  else if (yr==='2015') {
+    window.location.replace("crime2015");
+  }
+  else if (yr==='2016') {
+    window.location.replace("crime2016");
+  }  
+  else if (yr==='2017') {
+    window.location.replace("crime2017");
+  }
+  else {
+    window.location.replace("crime2018");
+  }
+
+}
+function show(err, html){
+    if(err) { console.log(err)};
+}
+</script>
+</html>

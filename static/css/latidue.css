@@ -1,0 +1,70 @@
+footer {
+    /* Set black background color, white text and some padding */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+body {
+    background-color:gainsboro; 
+    padding-top:0px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+.nav-custom {
+    background-color:white; 
+    border:0px;
+    border-radius:0px;
+    /*margin-left:0px;*/
+    }
+.navbar-brand-custom {
+    margin-left: 60px; 
+    background: turquoise; 
+    color:white; 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+.img-size {
+    width: 30.5em;
+    }
+div.thumbnail  {
+    border: 0px;
+    border-radius: 0px;
+    }
+.col-md-6-custom{
+    padding-right: 0px;
+    padding-left: 0px;
+    }
+.h2-custom {
+    color:turquoise; 
+    font-size: 25px;
+    padding-top: 20px 
+    }
+.h2-detail-custom {
+    color:turquoise; 
+    /*font-size: 20px;*/
+    font-size: 1.875em
+    }
+.p-custom {
+        color:turquoise; 
+        font-size: 1.25em;
+    }
+.p-detail {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+.img-detail {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    /*height: 200px;*/
+}
+table {
+    font-family:'Times New Roman', Times, serif;  
+    }
+html {
+    height: 100%;
+    }
+    html body {
+    height: 100%;
+    overflow: auto;
+    }

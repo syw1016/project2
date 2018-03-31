@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Project 2 Home Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://maxcdn.bootstrapcdn.com/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/latidue.css" rel="stylesheet">
+
+  </head>
+  <body style="background-color:gainsboro; padding-top:0px">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default" style="background-color:white; border:0px; border-radius:0px;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <b>
+          <a class="navbar-brand" style="margin-left: 60px; background: turquoise; color:white; font-family:Georgia, 'Times New Roman', Times, serif;" href="/">Migration</a>
+          </b>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visualization <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="migration">Migration</a></li>
+                  <li><a href="hvi">Home Value Index</a></li>
+                  <li><a href="crime">Crime</a></li>
+                  <li><a href="income">Income</a></li>
+              </ul>
+            </li>              
+            <!--<li><a href="#">Comparison</a></li>-->
+            <li><a href="#">About</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container-fluid -->
+    </nav>
+      <!-- Main component -->
+    <main role="main" class="container-fluid"> 
+      <div class="row" style="padding-left: 30px; padding-right: 50px;">
+        <div class="col-xs-12 col-md-8" style="border: 15px solid  gainsboro; padding-top: 2em; box-sizing:border-box; background-color:white;">
+            <b><strong style="color:turquoise; font-size:25px; font-family:Georgia, 'Times New Roman', Times, serif">Summary</strong></b><hr>
+              <p style= "font-family: Helvetica Neue ,Helvetica,Arial,sans-serif;">
+                <img class="img-responsive" src="./images/Latitude_vs_Max_Temperature.png" alt="Latitude vs Max Temperature" style="float:left;width:200px;height:200px;padding-right:20px;">
+                The purpose of this project is to analyze how weather changes as you get closer to the equator. To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble
+                a dataset on over 500 cities.<br><br>
+                After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. Factors we looked at included: temperature, cloudiness, wind speed, and humidity.
+                This site provides the source data and visualization created as part of the analysis as well as explanations and description of any trends and correlations witnessed.
+                <br><br><strong>Articulation:</strong> 
+                As rent increases and new business increases, looking at the increase of homeless population, the migration of income levels out of cities that experience this.
+
+                Problem Statement: Gentrification displaces poor individuals and minorities and increases homeless population
+                Timeline: from 2000 to 2010
+                Cities of Interest: Los Angeles, CA; NYC, NY; Seattle, WA; Chicago, IL;
+                Action items
+                Migration and map visualization for that Rent or mortgage and retail data with slider map (with dots and as rent increase, increase number of dots) Reviewing API for walking score + crime rate Demolition of section 8 housing over time regression analysis between indicators vs reactors
+
+                <br><br><strong>Possible Data Sources:</strong> 
+                Migraition using CENSUS
+                Rent/Home value data
+                Crime/Walking score
+                HUD => Demolition of low income housing
+                Homeless population
+                Federal Housing Finance Agency (FHFA) <a>(https://www.census.gov/geo/reference/zctas.html)</a>
+                Possible Stories…
+                Slider comparing rent prices and growth of “indicator” restaurants/businesses over time Debunking the “other side” Migration data from city to suburban and back again (depends on data we find) Start with an overarching idea Having a map of the united states with a slider that shows the progression of “gentrification” over time. Using the areas with drastic change as focal points, using the places with no change as control (look into the population break down) As rent increases and new business increases, looking at the increase of homeless population, the migration of income levels out of cities that experience this. Time frame: 2000-2010 For conclusion: statistical analysis of the rent and retail/business to conclude gentrification is influenced by these. Regression analysis
+
+                <li>rent affects migration, homelessness</li>
+                <li>retail affects migration, homelessness</li> 
+              </p>
+        </div>
+        <div class="col-xs-12 col-md-4" style="border: 15px solid  gainsboro; padding-top: 2em; box-sizing:border-box; background-color:white;">
+            <strong style="color:turquoise; font-size:25px; font-family:Georgia, 'Times New Roman', Times, serif">Visualization</strong><hr>
+
+                <div class="col-md-6 col-xs-3 col-md-6-custom">
+                    <div class="thumbnail" >
+
+
+                        <!--<div class="caption"></div>-->
+                      <a href="./visualization/max_temperature.html" target="_self">
+                        <img class=" img-size" src="./images/Latitude_vs_Max_Temperature.png" alt="Latitude_vs_Max_Temperature.png">
+                      </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-3 col-md-6-custom">
+                    <div class="thumbnail" >
+
+
+
+                      <a href="./visualization/humidity.html" target="_self">
+                        <img class=" img-size" src="./images/Latitude_vs_Humidity.png" alt="Latitude_vs_Humidity.png">
+                      </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-3 col-md-6-custom">
+                    <div class="thumbnail">
+
+
+
+                      <a href="./visualization/cloudiness.html" target="_self">
+                        <img class=" img-size" src="./images/Latitude_vs_Cloudiness.png" alt="Latitude_vs_Cloudiness.png">
+                      </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-3 col-md-6-custom">
+                    <div class="thumbnail">
+
+
+
+                      <a href="./visualization/wind_speed.html" target="_self">
+                        <img class=" img-size" src="./images/Latitude_vs_Wind_Speed.png" alt="Latitude_vs_Wind_Speed.png">
+                      </a>
+                    </div>
+                </div> 
+
+
+        </div>
+
+
+  
+
+      </div>
+
+
+    </main>
+    <br><br>
+    <div class="container-fluid" style="height: 5px; width:100%; background:turquoise; position:absolute; bottom:50px"></div>
+    <!--Footer-->
+    <footer class="container-fluid text-center">
+        <!--Copyright-->
+      <div class="container-fluid">
+          © 2017 Copyright
+      </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+  
+  
+</body></html>

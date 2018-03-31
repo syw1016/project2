@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Los Angeles County Migration</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/multi-select.css">
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="static/js/leaflet.pattern-src.js"></script>
+  <script src="static/js/jquery.multi-select.js"></script>
+  <script src="static/js/jquery.quicksearch.js"></script> 
+ 
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Home Value Index change between 2009 and 2017 (Statewide)</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div id="map"></div>
+    </div>
+    <div class="col-lg-6">
+      <svg id="stateline" height="600" width="100%"></svg>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>LA County Cities Home Value Index Change</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-4">
+      <select id='searchable' multiple='multiple'></select>
+    </div>
+    <div class="col-lg-8">
+      <svg id="cityline" height="600" width="100%"></svg>
+    </div>
+  </div>
+
+  <div class="card mb-3 tight">
+    <div class="card-header">How is this page built</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><button type="button" class="btn btn-success">leaflet</button> : To draw the map for "Home Value Index Change between 2009 and 2017"</li>
+      <li class="list-group-item"><button type="button" class="btn btn-success">leaflet-pattern</button> : To add stripe pattern in leaflet map (plug-in)</li>
+      <li class="list-group-item"><button type="button" class="btn btn-warning">d3</button> : To draw line graphs for statewide and LA county cities Home Value Index Change</li>
+      <li class="list-group-item"><button type="button" class="btn btn-info" style="background-color: rgb(86, 61, 124); border-color: rgb(86, 61, 124);">bootstrap</button> : For page styling</li>
+    </ul>
+  </div>
+</div>
+
+<script src="static/js/us-states.js"></script>
+<script src="static/js/map.js"></script>
+<script>
+function drawStateline(states) {
+  let svg = d3.select("#stateline"),
+      margin = {top: 20, right: 65, bottom: 40, left: 60},
+      width = parseInt(svg.style("width")) - margin.left - margin.right,
+      height = +svg.attr("height") - margin.top - margin.bottom;
+
+  let parseTime = d3.timeParse("%Y-%m");
+
+  let x = d3.scaleTime().range([0, width]),
+      y = d3.scaleLinear().range([height, 0]),
+      z = d3.scaleOrdinal(d3.schemeCategory10);
+
+  let xAxis = d3.axisBottom(x),
+      yAxis = d3.axisLeft(y);
+
+  var line = d3.line()
+    .curve(d3.curveBasis)
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.hvi); });
+
+  var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.csv("static/datasets/State_Zhvi_AllHomes.csv", d => d).then(data => {
+  let states = data.slice();
+    let timeframe = data.columns.slice(3);
+    let stateNames = states.map(e => e.RegionName)
+
+    let datum = timeframe.map(e => {
+      let obj = {};
+      obj.date = e;
+      states.map(state => { obj[state.RegionName] = +state[e]; });
+      return obj;
+    });
+
+    let realData = stateNames.map(id => {
+      return {
+        id: id,
+        values: datum.map(row => {
+          return {
+            date: parseTime(row.date),
+            hvi: row[id]
+          }
+        })
+      };
+    });
+
+    console.log(realData);
+    x.domain(d3.extent(timeframe.map(e => parseTime(e))));
+    y.domain([
+      d3.min(states, state => d3.min(timeframe.map(date => +state[date]))),
+      d3.max(states, state => d3.max(timeframe.map(date => +state[date])))
+    ]);
+    z.domain(states.map(function(c) { return c.id; }));
+
+    g.append("g")
+      .call(xAxis)
+      .attr("transform", "translate(0," + height + ")")
+
+    g.append("g")
+      .call(yAxis)
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Home Value Index ($)");
+
+    var state = g.selectAll(".state")
+      .data(realData)
+      .enter()
+      .append("g")
+      .attr("class", "state")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-'); });
+
+    state.append("path")
+      .attr("class", "line")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-') + "-line"; } )
+      .attr("d", function(d) { return line(d.values.filter(e => e.hvi != 0)); })
+      .style("stroke", function(d) { return z(d.id); });
+
+    state.append("text")
+      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.hvi) + ")"; })
+      .attr("x", 3)
+      .attr("class", "line-tag")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-') + "-tag"; })
+      .attr("dy", "0.35em")
+      .style("font", "10px sans-serif")
+      .text(function(d) { return d.id; });
+  });
+}
+drawStateline();
+
+var la_county_cities = [
+  "Los Angeles","Pasadena","Santa Monica","Monrovia","Pomona","Long Beach","South Pasadena","Compton","Redondo Beach","Whittier"
+  ,"Azusa","Covina","Alhambra","Arcadia","Vernon","Glendale","Huntington Park","La Verne","Hermosa Beach","Sierra Madre","Claremont"
+  ,"Inglewood","Burbank","San Fernando","Glendora","El Monte","Manhattan Beach","San Gabriel","San Marino","Avalon","Beverly Hills"
+  ,"Monterey Park","El Segundo","Culver City","Montebello","Torrance","Lynwood","Hawthorne","South Gate","West Covina","Signal Hill"
+  ,"Maywood","Bell","Gardena","Palos Verdes Estates","Lakewood","Baldwin Park","Cerritos","La Puente","Downey","Rolling Hills","Paramount"
+  ,"Santa Fe Springs","Industry","Bradbury","Irwindale","Duarte","Norwalk","Bellflower","Rolling Hills Estates","Pico Rivera","South El Monte"
+  ,"Walnut","Artesia","Rosemead","Lawndale","Commerce","La Mirada","Temple City","San Dimas","Cudahy","Bell Gardens"
+  ,"Hidden Hills","Palmdale","Hawaiian Gardens","Lomita","Carson","Rancho Palos Verdes","La Canada-Flintridge","Lancaster"
+  ,"La Habra Heights","Westlake Village","Agoura Hills","West Hollywood","Santa Clarita","Diamond Bar","Malibu","Calabasas"
+  ]
+
+la_county_cities.forEach(e => {
+  $("#searchable").append(`<option value="${e}">${e}</option>`);
+})
+
+function drawCityLine() {
+  var svg = d3.select("#cityline"),
+      margin = {top: 20, right: 120, bottom: 80, left: 60},
+      width = parseInt(svg.style("width")) - margin.left - margin.right,
+      height = +svg.attr("height") - margin.top - margin.bottom;
+
+  var parseTime = d3.timeParse("%Y-%m");
+
+  var x = d3.scaleTime().range([0, width]),
+      y = d3.scaleLinear().range([height, 0]),
+      z = d3.scaleOrdinal(d3.schemeCategory10);
+
+  var xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat("%b-%Y")).ticks(d3.timeMonth, 3),
+      yAxis = d3.axisLeft(y);
+
+  var line = d3.line()
+    .curve(d3.curveBasis)
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.hvi); });
+
+  var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.csv("static/datasets/LA_County_HVI.csv", d => d).then(data => {
+  // d3.csv("{{ url_for('static', filename='datasets/LA_County_HVI.csv') }}", d => d).then(data => {
+    console.log(data);
+    let cities = data.slice();
+    let timeframe = data.columns.slice(159);
+    let cityNames = cities.map(e => e.RegionName)
+    let datum = timeframe.map(e => {
+      let obj = {};
+      obj.date = e;
+      cities.map(city => {
+        obj[city.RegionName] = +city[e];
+      })
+      return obj;
+    });
+
+    realData = cityNames.map(id => {
+      return {
+        id: id,
+        values: datum.map(row => {
+          return {
+            date: parseTime(row.date),
+            hvi: row[id]
+          }
+        })
+      };
+    });
+
+    x.domain(d3.extent(timeframe.map(e => parseTime(e))));
+    y.domain([
+      d3.min(cities, city => d3.min(timeframe.map(date => +city[date]))),
+      d3.max(cities, city => d3.max(timeframe.map(date => +city[date])))
+    ]);
+    z.domain(cities.map(function(c) { return c.id; }));
+
+    g.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .selectAll("text")
+        .attr("dx", "-3em")
+        .attr("dy", "1em")
+        .attr("transform", function(d) {
+          return "rotate(-90)"
+        });
+
+    g.append("g")
+      .call(yAxis)
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Home Value Index ($)");
+
+    var city = g.selectAll(".city")
+      .data(realData)
+      .enter()
+      .append("g")
+      .attr("class", "city")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-'); });
+
+    city.append("path")
+      .attr("class", "line")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-') + "-line"; } )
+      .attr("d", function(d) { return line(d.values.filter(e => e.hvi != 0)); })
+      .style("stroke", function(d) { return z(d.id); });
+
+    city.append("text")
+      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.hvi) + ")"; })
+      .attr("x", 3)
+      .attr("class", "line-tag")
+      .attr("id", function(d) { return d.id.toLowerCase().replace(/ /g,'-') + "-tag"; })
+      .attr("dy", "0.35em")
+      .style("font", "10px sans-serif")
+      .text(function(d) { return d.id; });
+    })
+}
+
+drawCityLine();
+
+$('#searchable').multiSelect({
+  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Plot City'>",
+  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Remove City'>",
+  afterInit: function(ms){
+  var that = this,
+      $selectableSearch = that.$selectableUl.prev(),
+      $selectionSearch = that.$selectionUl.prev(),
+      selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+      selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+  that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+  .on('keydown', function(e){
+    if (e.which === 40){
+      that.$selectableUl.focus();
+      return false;
+    }
+  });
+
+  that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+  .on('keydown', function(e){
+    if (e.which == 40){
+      that.$selectionUl.focus();
+      return false;
+    }
+  });
+},
+  afterSelect: function(values){
+    this.qs1.cache();
+    this.qs2.cache();
+    let selectedValue = values[0];
+    $('#'+selectedValue.toLowerCase().replace(/ /g,'-')+"-line").toggle({duration: 1000});
+    $('#'+selectedValue.toLowerCase().replace(/ /g,'-')+"-tag").toggle({duration: 1000});
+  },
+  afterDeselect: function(values){
+    this.qs1.cache();
+    this.qs2.cache();
+    let selectedValue = values[0];
+    $('#'+selectedValue.toLowerCase().replace(/ /g,'-')+"-line").toggle({duration: 1000});
+    $('#'+selectedValue.toLowerCase().replace(/ /g,'-')+"-tag").toggle({duration: 1000});
+  }
+});
+</script>
+</body>
+</html>

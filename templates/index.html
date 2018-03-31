@@ -1,13 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Gentrification</title>
-</head>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+      <title>LA County Migration</title>
+
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('../static/img/homepage.jpg');
+    min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+    background-image: url("../static/img/homepage.jpg");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("../static/img/homepage.jpg");
+    min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}
+</style>
 <body>
-  Hello Team
-  <script src="./static/index.js"></script>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="./" class="w3-bar-item w3-button">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+    <a href="#visualization" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> VISUALIZATIONS</a>
+    <a href="#refs" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-book"></i> REFERENCES</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="#visualization" class="w3-bar-item w3-button" onclick="toggleFunction()">VISUALIZATIONS</a>
+    <a href="#refs" class="w3-bar-item w3-button" onclick="toggleFunction()">REFERENCES</a>
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">LOS<span class="w3-hide-small">ANGELES</span> MIGRATION</span>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">SUMMARY</h3>
+  <p class="w3-center"><em>Why are people leaving LA County...</em></p>
+  <p> <strong>Articulation:</strong><br><br> 
+    As rent increases and new business increases, looking at the increase of homeless population, the migration of income levels out of cities that experience this.
+
+    Problem Statement: Gentrification displaces poor individuals and minorities and increases homeless population
+    Timeline: from 2000 to 2010
+    Cities of Interest: Los Angeles, CA; NYC, NY; Seattle, WA; Chicago, IL;
+    <br><br><br><strong>Action items</strong><br><br>
+    Migration and map visualization for that Rent or mortgage and retail data with slider map (with dots and as rent increase, increase number of dots) Reviewing API for walking score + crime rate Demolition of section 8 housing over time regression analysis between indicators vs reactors
+    <br><br><br><strong>Possible Data Sources:</strong> 
+    <li>Migraition using CENSUS</li>
+    <li>Rent/Home value data</li>
+    <li>Crime/Walking score</li>
+    <li>HUD => Demolition of low income housing</li>
+    <li>Homeless population</li>
+    <li>Federal Housing Finance Agency (FHFA)</li>
+    <br><br><strong> Stories…</strong><br><br>
+    Slider comparing rent prices and growth of “indicator” restaurants/businesses over time Debunking the “other side” Migration data from city to suburban and back again (depends on data we find) Start with an overarching idea Having a map of the united states with a slider that shows the progression of “gentrification” over time. Using the areas with drastic change as focal points, using the places with no change as control (look into the population break down) As rent increases and new business increases, looking at the increase of homeless population, the migration of income levels out of cities that experience this. Time frame: 2000-2010 For conclusion: statistical analysis of the rent and retail/business to conclude gentrification is influenced by these. Regression analysis
+
+    <li>rent affects migration, homelessness</li>
+    <li>retail affects migration, homelessness</li> 
+  </p>
+</div>
+
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="visualization">
+  <h3 class="w3-center">VISUALIZATIONS</h3>
+  <p class="w3-center"><em>These visializations are vivid portrayals of migration from LA County .<br> Click on the images navigate to the visualization shown</em></p><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+        <a href="migration" target="_self">
+          <img src="../static/img/migration.jpg" style="width:100%"  class="w3-hover-opacity" alt="Migration">
+        </a>
+    </div>
+
+    <div class="w3-col m3">
+        <a href="hvi" target="_self">
+          <img src="../static/img/housing.jpg" style="width:100%" class="w3-hover-opacity" alt="Housing value index">
+        <a/>
+    </div>
+
+    <div class="w3-col m3">
+        <a href="crime" target="_self">
+          <img src="../static/img/crime.jpg" style="width:100%" class="w3-hover-opacity" alt="Crime">
+        <a/>
+    </div>
+
+    <div class="w3-col m3">
+        <a href="income" target="_self">
+          <img src="../static/img/income.jpg" style="width:100%"  class="w3-hover-opacity" alt="Income">
+        </a>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="refs">
+  <h3 class="w3-center">REFERENCES</h3>
+  <p class="w3-center"><em>Stay in LA!</em></p>
+
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m12 w3-panel">
+      <div class="w3-margin-bottom">
+        <a href="https://www.census.gov/search-results.html?q=califrornia+median+income&page=1&stateGeo=none&searchtype=web&cssp=SERP">
+          <i class="w3-hover-text-black">https://www.census.gov/search-results.html?q=califrornia+median+income&page=1&stateGeo=none&searchtype=web&cssp=SERP</i>
+        </a><br>
+        <a href="https://www.census.gov/geo/reference/zctas.html">
+          <i class="w3-hover-text-black">https://www.census.gov/geo/reference/zctas.html</i>
+        </a><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+  </div>
+</footer>
+ 
+<script>
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
 </body>
 </html>

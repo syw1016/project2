@@ -29,7 +29,10 @@ function optionChanged(filter) {
         lrmap = L.map('map').setView([36.68, -93.94], 5);
         migrationLayer.addTo(lrmap);
     }*/
-    if(stmtId!='-1'){
+    if (stmtId===2){
+
+    }
+    else if(stmtId!='-1'){
         url = '/migration/'+ stmtId +'/'+ st
     }
     else{

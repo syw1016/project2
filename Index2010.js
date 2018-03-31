@@ -21,7 +21,7 @@ $(document).ready(function () {
         {text: "THEFT_PETTY", count: "11117"},
         {text: "THEFT_GRAND", count: "11077"},
         {text: "INTIMATE_ASSAULT", count: "10397"},
-        {text: "VANDALISM - FELONY ($400 & OVER, ALL CHURCH VANDALISMS)", count: "110311"},
+        {text: "VANDALISM", count: "110311"},
       ],
       eval: function (item) {return item.count;},
       classed: function (item) {return item.text.split(" ").join("");}

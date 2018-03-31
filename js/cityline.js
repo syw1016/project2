@@ -11,19 +11,13 @@ var la_county_cities = [
   ]
 
 la_county_cities.forEach(e => {
-  // $("#cities").append(`<li><input class="checkBox" id="checkBox" type="checkbox" value="${e}"> ${e}</li>`);
   $("#searchable").append(`<option value="${e}">${e}</option>`);
 })
 
-// $(".checkBox").click(function() {
-//   $('#'+$(this).val().toLowerCase().replace(/ /g,'-')+"-line").toggle({duration: 1000});
-//   $('#'+$(this).val().toLowerCase().replace(/ /g,'-')+"-tag").toggle({duration: 1000});
-// })
-
 function drawCityLine() {
   var svg = d3.select("#cityline"),
-      margin = {top: 20, right: 120, bottom: 80, left: 80},
-      width = +svg.attr("width") - margin.left - margin.right,
+      margin = {top: 20, right: 120, bottom: 80, left: 60},
+      width = parseInt(svg.style("width")) - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
 
   var parseTime = d3.timeParse("%Y-%m");

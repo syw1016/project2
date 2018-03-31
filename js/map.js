@@ -107,6 +107,13 @@ function drawLine(e) {
     $('#'+selectedState+"-tag").toggle({duration: 3000});
   } else {
     selectedStates.splice(layerIndex, 1);
+    geojson.resetStyle(layer);
+    layer.setStyle({
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7,
+    });
     $('#'+selectedState+"-line").toggle({duration: 3000});
     $('#'+selectedState+"-tag").toggle({duration: 3000});
   }
